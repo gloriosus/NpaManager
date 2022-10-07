@@ -1,0 +1,63 @@
+﻿@model IEnumerable<NpaManagerMVC.Models.Period>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Периоды</h2>
+
+<p>
+    @Html.ActionLink("Создать новый период", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Year)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Quarter)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DateFirst)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DateEnd)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Editable)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Browsable)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Year)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Quarter)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DateFirst)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DateEnd)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Editable)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Browsable)
+        </td>
+        <td>
+            @Html.ActionLink("Правка", "Edit", new { id=item.PeriodId }) |
+            @Html.ActionLink("Просмотр", "Details", new { id=item.PeriodId }) |
+            @Html.ActionLink("Удалить", "Delete", new { id=item.PeriodId })
+        </td>
+    </tr>
+}
+
+</table>

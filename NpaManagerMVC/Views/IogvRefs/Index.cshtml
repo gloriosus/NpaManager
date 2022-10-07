@@ -1,0 +1,22 @@
+﻿@model IEnumerable<NpaManagerMVC.Models.IogvRef>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Справочник органов власти</h2>
+
+<table class="table">
+    <tr>
+        <th>@Html.DisplayNameFor(model => model.Iogv)</th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+       <td>
+          @Html.DisplayFor(modelItem => item.Iogv)
+       </td>
+    </tr>
+}
+
+</table>

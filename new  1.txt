@@ -1,0 +1,56 @@
+//--  I
+"DateD" 		DataSetColumn="DateD"
+"PlanDateLaw" 	DataSetColumn="PlanDateLaw"
+"PlanDateEcon" 	DataSetColumn="PlanDateEcon"
+"PlanDateLingv" DataSetColumn="PlanDateLingv"
+"PlanDateOrg" 	DataSetColumn="PlanDateOrg"
+"PlanDateGov" 	DataSetColumn="PlanDateGov"
+"NpaNote" 		DataSetColumn="NpaNote"
+
+I квартал 2015 г
+II квартал 2015 г
+IV квартал 2014 г
+Информационно-аналитическое управление правительства области
+
+Измены данные ReadOnly, доступные только для чтения.
+
+
+begin
+declare @Iogv varchar(1024);
+set @Iogv = 'Информационно-аналитическое управление правительства области';
+Select sum(a.Qty) as TotalQty From (
+	  Select Count(*) as Qty From NpaI Where Iogv = @Iogv
+	  UNION
+	  Select Count(*) as Qty From NpaII Where Iogv = @Iogv
+	  UNION
+	  Select Count(*) as Qty From NpaIII Where Iogv = @Iogv
+	  UNION
+	  Select Count(*) as Qty From NpaIV Where Iogv = @Iogv
+	) a;
+end
+
+
+begin
+declare @Iogv varchar(1024);
+set @Iogv = 'Информационно-аналитическое управление правительства области';
+Select sum(a.Qty) as TotalQty From (
+	  Select Count(*) as Qty, 'NpaI'   as Nm From NpaI Where Iogv = @Iogv
+	  UNION
+	  Select Count(*) as Qty, 'NpaII'  as Nm From NpaII Where Iogv = @Iogv
+	  UNION
+	  Select Count(*) as Qty, 'NpaIII' as Nm From NpaIII Where Iogv = @Iogv
+	  UNION
+	  Select Count(*) as Qty, 'NpaIV'  as Nm From NpaIV Where Iogv = @Iogv
+	) a;
+end
+
+
+UPDATE [dbo].[IogvRef] SET [Iogv] = @Iogv WHERE (([Iogv] = @Original_Iogv));
+SELECT Iogv FROM IogvRef WHERE (Iogv = @Iogv)
+
+Информационно-аналитическое управление правительства области
+UPDATE [dbo].[NpaI] SET [Iogv] = @Iogv WHERE (([Iogv] = @Original_Iogv));
+UPDATE [dbo].[NpaII] SET [Iogv] = @Iogv WHERE (([Iogv] = @Original_Iogv));
+UPDATE [dbo].[NpaIII] SET [Iogv] = @Iogv WHERE (([Iogv] = @Original_Iogv));
+UPDATE [dbo].[NpaIV] SET [Iogv] = @Iogv WHERE (([Iogv] = @Original_Iogv));
+SELECT Iogv FROM IogvRef WHERE (Iogv = @Iogv)

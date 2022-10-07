@@ -1,0 +1,66 @@
+﻿@model NpaManagerMVC.Models.Period
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2></h2>
+
+<div>
+    <h4>Период</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Year)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Year)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Quarter)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Quarter)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DateFirst)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DateFirst)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DateEnd)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DateEnd)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Editable)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Editable)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Browsable)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Browsable)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Правка", "Edit", new { id = Model.PeriodId }) |
+    @Html.ActionLink("Вернуться к списку", "Index")
+</p>
